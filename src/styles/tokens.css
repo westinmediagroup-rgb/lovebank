@@ -1,0 +1,310 @@
+/* Love Bank design system — ported from mockups */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Colour palette */
+  --cream:    #faf6ef;
+  --ink:      #1c1a17;
+  --ink2:     #3a3630;
+  --ink3:     #48454f;
+  --muted:    #6e6660;   /* darkened from #8c8278 — passes WCAG AA 4.5:1 on cream */
+  --line:     #e8e2d8;
+  --amber:    #d4821e;
+  --amber-l:  #f0a84a;
+  --amber-p:  #fdf3e3;
+  --teal:     #1a7a60;
+  --teal-p:   #e4f3ee;
+  --red:      #d94f4f;
+  --red-p:    #fdeaea;
+  --white:    #ffffff;
+
+  /* Clay (withdrawals / warm accountability) */
+  --clay:        #b85c38;
+  --clay-p:      #fdf1ec;
+  --clay-border: #e8bfad;
+
+  /* Buddy / Goals (lavender) */
+  --buddy:        #7C6FAC;
+  --buddy-p:      #F0EEFF;
+  --buddy-border: #C4B8E8;
+
+  /* Dark surface (dashboard) */
+  --dark-bg:     #0f0f0d;
+  --dark-card:   #1a1a18;
+  --dark-border: #2c2c2a;
+  --dark-text:   #e8e6df;
+  --dark-muted:  #888780;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Jost', system-ui, sans-serif;
+  --font-mono:  'DM Mono', monospace;
+
+  /* Spacing */
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-pill: 100px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+/* ── Accessibility: visible focus ring ── */
+*:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Accessibility: minimum 44px tap targets ── */
+button, [role="button"] {
+  min-height: 44px;
+}
+
+/* ── Accessibility: readable placeholder text ── */
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Mobile container ── */
+.app-shell {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.card-dark {
+  background: var(--dark-card);
+  border: 0.5px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  width: 100%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 14px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--amber); }
+.btn-primary:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; }
+
+.btn-outline {
+  width: 100%;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 13px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+.btn-amber {
+  width: 100%;
+  background: var(--amber);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 14px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-amber:hover { opacity: 0.9; }
+
+/* ── Inputs ── */
+.input {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--amber); }
+.input-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Section labels ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ── Serif headings ── */
+.serif { font-family: var(--font-serif); }
+
+/* ── Health state badges ── */
+.state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 500;
+}
+.state-thriving   { background: #e4f3ee; color: #1a7a60; }
+.state-growing    { background: #e4f3ee; color: #1a7a60; }
+.state-recovering { background: var(--amber-p); color: var(--amber); }
+.state-drifting   { background: var(--amber-p); color: #854f0b; }
+.state-struggling { background: var(--red-p); color: var(--red); }
+
+/* ── Page header ── */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 0.5px solid var(--line);
+}
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+}
+.btn-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* ── Screen body ── */
+.screen-body {
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+/* ── Bottom nav ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: rgba(250,246,239,0.95);
+  backdrop-filter: blur(12px);
+  border-top: 0.5px solid var(--line);
+  display: flex;
+  padding: 10px 0 20px;
+  z-index: 50;
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: var(--muted);
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.nav-item.active { color: var(--amber); }
+.nav-icon { font-size: 20px; line-height: 1; }
+
+/* ── Utility ── */
+.text-muted  { color: var(--muted); }
+.text-amber  { color: var(--amber); }
+.text-teal   { color: var(--teal); }
+.text-red    { color: var(--red); }
+.mt-4  { margin-top: 4px; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-20 { margin-top: 20px; }
+
+/* ── Animations ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes vaultFloat {
+  0%   { transform: translateY(0px)   rotate(-4deg) scale(1);    }
+  100% { transform: translateY(-10px) rotate(4deg)  scale(1.06); }
+}
+
+@keyframes vaultPopIn {
+  0%   { transform: scale(0)   rotate(-12deg); opacity: 0; }
+  65%  { transform: scale(1.25) rotate(6deg);  opacity: 1; }
+  100% { transform: scale(1)   rotate(0deg);   opacity: 1; }
+}
+
+@keyframes vaultShimmer {
+  0%, 100% { box-shadow: 0 0 0px rgba(255,255,255,0); }
+  50%       { box-shadow: 0 0 20px rgba(255,255,255,0.25); }
+}
+
+@keyframes celebrate {
+  0%   { transform: scale(1)    rotate(0deg); }
+  20%  { transform: scale(1.06) rotate(-4deg); }
+  40%  { transform: scale(1.06) rotate(4deg); }
+  60%  { transform: scale(1.03) rotate(-2deg); }
+  80%  { transform: scale(1.03) rotate(2deg); }
+  100% { transform: scale(1)    rotate(0deg); }
+}
